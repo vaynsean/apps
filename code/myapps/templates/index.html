@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Apps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            position: relative; /* Position for top-left corner element */
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .app-link {
+            display: block;
+            margin: 20px 0;
+            font-size: 24px;
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .app-link:hover {
+            color: #0056b3;
+        }
+        /* Styles for the globe icon and language selector */
+        .language-select {
+            position: absolute;
+            top: 20px;
+            left: 20px; /* Move to the top-left */
+            display: flex;
+            align-items: center;
+        }
+        .language-select select {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Apps</h1>
+
+    <!-- Language Selector -->
+    <div class="language-select">
+        🌐
+        <select id="language_select">
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="uk">Українська</option>
+        </select>
+    </div>
+
+    <!-- Link to Reading Helper -->
+    <a href="#" id="ai_helper.html" class="app-link">AI Helper</a>
+
+    <!-- Link to Reading Helper -->
+    <a href="#" id="reading_helper_link" class="app-link">Reading Helper</a>
+
+    <!-- Link to Trucking Helper -->
+    <a href="#" id="trucking_helper_link" class="app-link">Trucking Helper</a>
+
+    <script>
+        // Set the default language based on stored preference
+        document.addEventListener('DOMContentLoaded', function () {
+            var lang = localStorage.getItem('lang') || 'en';
+            document.getElementById('language_select').value = lang;
+            updateText(lang);
+        });
+
+        // Update text based on selected language
+        document.getElementById('language_select').addEventListener('change', function () {
+            var selectedLang = this.value;
+            localStorage.setItem('lang', selectedLang);
+            updateText(selectedLang);
+        });
+
+        function updateText(lang) {
+            // Change text for Reading Helper based on language
+            document.querySelector('h1').textContent = lang === 'ru' ? 'Мои Приложения' : lang === 'uk' ? 'Мої Програми' : 'My Apps';
+            document.getElementById('reading_helper_link').textContent = lang === 'ru' ? 'Помощник для чтения' : lang === 'uk' ? 'Помічник для читання' : 'Reading Helper';
+            
+            // Change text for Trucking Helper based on language
+            document.getElementById('trucking_helper_link').textContent = lang === 'ru' ? 'Помощник для грузоперевозок' : lang === 'uk' ? 'Помічник для вантажоперевезень' : 'Trucking Helper';
+
+            // Update the links with the language parameter
+            document.getElementById('reading_helper_link').href = `/reading_helper?lang=${lang}`;
+            document.getElementById('trucking_helper_link').href = `/trucking_helper?lang=${lang}`;
+        }
+    </script>
+</body>
+</html>

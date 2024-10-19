@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Helper</title>
+    <style>
+        /* Reuse styles from the original page */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        a {
+            display: block;
+            margin: 20px 0;
+            font-size: 18px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .language-select, button {
+            margin-top: 20px;
+        }
+        /* Additional styles if needed */
+    </style>
+</head>
+<body>
+
+    <!-- Back to Home Link -->
+    <a href="{{ url_for('home') }}">Back to Home</a>
+
+    <!-- Language Selector -->
+    <div class="language-select">
+        🌐&nbsp;
+        <select id="language_select">
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="uk">Українська</option>
+        </select>
+    </div>
+
+    <!-- Theme Toggle Button -->
+    <button id="theme_toggle">Light / Dark</button>
+
+    <h1>AI Helper</h1>
+
+    <script>
+        // JavaScript to handle language change and theme toggle, similar to your other page
+    </script>
+</body>
+</html>
